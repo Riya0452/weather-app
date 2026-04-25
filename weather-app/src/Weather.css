@@ -1,0 +1,517 @@
+body {
+margin: 0;
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(to right, #e298cd, #a6c1ee);
+}
+
+
+.app {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+transition: background 0.5s ease;
+}
+
+.app::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.3;
+
+}
+
+.app.dark::before {
+  background: rgba(0, 0, 0, 0.65); 
+  
+}
+
+
+
+.app.dark {
+  color: #e0e0e0; 
+}
+
+
+.app.dark .temp {
+  color: #f5f5f5;
+}
+
+
+.app.dark .forecast-container p {
+  color: #d1d5db;
+}
+.app.dark .temp {
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+.app.dark .forecast-container div {
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.7),
+    inset 0 0 8px rgba(255,255,255,0.05);
+}
+
+.app.dark .details div {
+  color: #cbd5e1;
+  background: rgba(255,255,255,0.1); 
+}
+
+
+.app.dark h1,
+.app.dark h2 {
+  color: #f1f5f9;
+}
+
+.app.dark p {
+  color: #a5b4fc; 
+}
+
+.toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 30px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 3px;
+  left: 4px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.3s;
+}
+
+
+.toggle:checked {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.toggle:checked::before {
+  transform: translateX(28px);
+  background: #222;
+}
+
+.toggle:hover {
+  transform: scale(1.05);
+}
+
+.card {
+width: 100%;
+max-width: 600px;
+padding: 20px;
+border-radius: 20px;
+background: linear-gradient(right to rgb(216, 211, 211) rgb(125, 247, 239));
+backdrop-filter: blur(40px);
+box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+text-align: center;
+animation: fadeIn 1s ease;
+}
+.card,.forecast-container {
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+transform: translateY(-5px) scale(1.02);
+transition: 0.3s;
+}
+
+
+.card h1 {
+color: white;
+font-size: 40px;
+margin-bottom: 15px;
+text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.forecast-container div {
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.15),
+    inset 0 0 10px rgba(255,255,255,0.1);
+}
+
+
+
+input {
+width: 80%;
+padding: 12px;
+border-radius: 20px;
+border: none;
+outline: none;
+margin-bottom: 10px;
+background: rgba(255,255,255,0.3);
+backdrop-filter: blur(10px);
+color: black;
+}
+
+button {
+padding: 12px 25px;
+border-radius: 20px;
+border: none;
+background: linear-gradient(45deg,#ff9a9e,#fad0c4);
+font-weight: bold;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+transform: scale(1.1);
+}
+ .history-container {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+ .dark .history-container span {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+  border: 1px solid #334155;
+}
+
+.dark .history-container span:hover {
+  background: #38bdf8;
+  color: black;
+  transform: scale(1.05);
+}
+
+.light .history-container span {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.light .history-container span:hover {
+  background: #0ea5e9;
+  color: white;
+  transform: scale(1.05);
+}
+
+
+
+.weather-box {
+margin-top: 20px;
+color: white;
+animation: slideUp 0.8s ease;
+}
+
+.city {
+font-size: 28px;
+font-weight: bold;
+}
+
+.temp {
+font-size: 50px;
+font-weight: bold;
+margin: 10px 0;
+}
+
+.weather-box p {
+font-size: 18px;
+color: blueviolet;
+}
+
+
+.weather-icon {
+width: 100px;
+margin: 10px 0;
+filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+
+.details {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+margin-top: 15px;
+}
+
+
+.details div {
+background: rgba(255,255,255,0.25);
+backdrop-filter: blur(10px);
+padding: 10px;
+border-radius: 15px;
+width: 30%;
+color: black;
+margin: 5px;
+}
+
+
+p {
+color: rgb(42, 10, 148);
+}
+
+
+
+h3 {
+color: #666;
+}
+
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: scale(0.9);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+@keyframes slideUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+
+.sunny {
+animation: sunGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+from {
+box-shadow: 0 0 20px rgba(255, 200, 0, 0.4);
+}
+to {
+box-shadow: 0 0 60px rgba(255, 200, 0, 0.9);
+}
+}
+
+
+.cloudy {
+animation: cloudMove 6s ease-in-out infinite;
+}
+
+@keyframes cloudMove {
+0% { transform: translateX(0); }
+50% { transform: translateX(10px); }
+100% { transform: translateX(0); }
+}
+
+
+.rainy {
+position: relative;
+overflow: hidden;
+}
+
+.rainy::before {
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: linear-gradient(
+rgba(255,255,255,0.2) 2px,
+transparent 2px
+);
+background-size: 2px 20px;
+animation: rainFall 0.5s linear infinite;
+}
+
+@keyframes rainFall {
+from {
+background-position: 0 -20px;
+}
+to {
+background-position: 0 20px;
+}
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  position :relative;
+  overflow: hidden;
+}
+.forecast-container div {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+
+  padding: 12px;
+  border-radius: 15px;
+
+  min-width: 100px;
+  text-align: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  transition: 0.3s;
+
+ 
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+
+.forecast-container div * {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-weight: 500;
+}
+/* FORECAST CARD */
+/* .forecast-container div {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+
+  padding: 12px;
+  border-radius: 15px;
+
+  min-width: 100px;
+  text-align: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  transition: 0.3s;
+} */
+/* HOVER EFFECT */
+ /* .forecast-container div:hover {
+  transform: translateY(-5px);
+} */
+
+/* TEXT STYLE */
+ /* .forecast-container p {
+  margin: 5px 0;
+  color: rgb(88, 10, 171);
+  font-size: 14px;
+}  */
+
+/* DAY TEXT BOLD */
+ /* .forecast-container p:first-child {
+  font-weight: bold;
+  color: #333;
+}   */
+
+
+/* .forecast-container div:hover {
+  transform: translateY(-8px) scale(1.05);
+}  */
+  .forecast-container div {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+
+  padding: 12px;
+  border-radius: 15px;
+
+  min-width: 100px;
+  text-align: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  transition: 0.3s;
+
+  /* ✨ NEW */
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease;
+}
+
+/* HOVER EFFECT */
+.forecast-container div:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.dark.forecast-container div:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 0 5px yellow,
+  0 0 10px rgb(195, 195, 60),
+  0 0 20px rgb(195, 195, 60)
+}
+
+/* TEXT STYLE */
+.forecast-container p {
+  margin: 5px 0;
+  color: black;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* DAY TEXT */
+.forecast-container p:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+/* ✨ SOFT SHIMMER EFFECT */
+.forecast-container div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.forecast-container div:hover::before {
+  left: 100%;
+}
+.forecast-icon {
+  width: 50px;
+  margin: 5px 0;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* soft floating animation */
+@keyframes floatIcon {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ✨ FADE-UP ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 

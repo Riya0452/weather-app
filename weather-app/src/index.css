@@ -1,0 +1,75 @@
+*{
+  color: aliceblue;
+}
+/* ===== LAYOUT FIX ===== */
+.layout {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.main-card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(20px);
+  color: white;
+  text-align: center;
+}
+
+/* ===== FORECAST VISUAL ANIMATION ===== */
+
+.weather-visual {
+  width: 50px;
+  height: 50px;
+  margin: 10px auto;
+  border-radius: 50%;
+}
+
+/* SUNNY */
+.sunny-card .weather-visual {
+  background: radial-gradient(circle, #ffd700, #ff9800);
+  animation: sunMove 3s infinite alternate;
+}
+
+@keyframes sunMove {
+  from { transform: scale(0.9); }
+  to { transform: scale(1.2); }
+}
+
+/* CLOUD */
+.cloudy-card .weather-visual {
+  background: #ccc;
+  border-radius: 20px;
+  width: 60px;
+  height: 30px;
+  animation: cloudMove 4s infinite ease-in-out;
+}
+
+/* RAIN */
+.rainy-card .weather-visual {
+  background: transparent;
+  position: relative;
+}
+
+.rainy-card .weather-visual::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(255,255,255,0.6) 2px,
+    transparent 2px
+  );
+  background-size: 2px 12px;
+  animation: rainAnim 0.5s linear infinite;
+}
+
+@keyframes rainAnim {
+  from { background-position: 0 -10px; }
+  to { background-position: 0 10px; }
+}
